@@ -31,3 +31,7 @@ variable "acr" {
 variable "aks" {
   
 }
+variable "sqldb" {}
+
+
+variable "sqlserver" {}
