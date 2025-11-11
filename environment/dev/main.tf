@@ -40,3 +40,9 @@ module "macr" {
   source = "../module/acr"
   acr=var.acr
 }
+
+module "maks" {
+  depends_on = [module.mrg]
+  source     = "../module/aks"
+  aks        = var.aks
+}
