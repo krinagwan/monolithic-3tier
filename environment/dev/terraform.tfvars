@@ -25,16 +25,31 @@ vnet = {
       environment = "staging"
     }
   }
-  vnet2 = {
+}
+
+  snet = {
+    snet1={
+    vnetname                      = "dev-network"
+    location                      = "West europe"
+    resource_group_name           = "dev-rg-0001"
+    subnetname                    = "dev-subnet-internal"
+    address_prefixes              = ["10.0.2.0/24"]
+    nicame                        = "example-nic"
+    ipconfigname                  = "internal"
+    private_ip_address_allocation = "Dynamic"
+    tags = {
+      environment = "staging"
+    }
+  }
+  snet2 = {
     vnetname            = "dev-network"
-    address_space       = ["10.0.0.0/16"]
     location            = "West europe"
     resource_group_name = "dev-rg-0001"
     basname             = "AzureBastionSubnet"
     address_prefixes    = ["10.0.3.0/26"]
-    # nicame                        = "example-nic"
-    # ipconfigname                  = "internal"
-    # private_ip_address_allocation = "Dynamic"
+    nicame                        = "example-nic"
+    ipconfigname                  = "internal"
+    private_ip_address_allocation = "Dynamic"
     tags = {
       environment = "staging"
     }

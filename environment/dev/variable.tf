@@ -5,6 +5,9 @@ variable "rg" {
 variable "vnet" {
   type = map(any)
 }
+variable "snet" {
+  
+}
 
 variable "vm" {
   type = map(any)
