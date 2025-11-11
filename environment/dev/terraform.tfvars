@@ -176,7 +176,7 @@ aks = {
     aksidentityname                   = "identity-dev"
     location                          = "West europe"
     resource_group_name               = "dev-rg-0001"
-      vnetname                      = "dev-network"
+    vnetname                          = "dev-network"
     subnetname                        = "akssubnet"
     dns_prefix                        = "dev-dnsprefix"
     kubernetes_version                = 1.31
@@ -191,5 +191,39 @@ aks = {
       environment = "staging"
     }
 
+  }
+}
+
+
+sqlserver = {
+  sql1 = {
+    servername          = "myexamplesqlserver"
+    resource_group_name = "dev-rg-0001"
+    vnetname            = "dev-network"
+    kvname              = "examplekeyvault"
+    version             = "12.0"
+    location            = "West europe"
+    tags = {
+      environment = "staging"
+    }
+  }
+}
+
+
+
+sqldb = {
+  db1 = {
+    dbname              = "myexamplesqldatabase"
+    resource_group_name = "dev-rg-0001"
+    vnetname            = "dev-network"
+    stname              = "storageaccountname"
+    servername          = "myexamplesqlserver"
+    sku_name            = "S0"
+    location            = "West europe"
+    max_size_gb         = 10
+    zone_redundant      = false
+    tags = {
+      environment = "staging"
+    }
   }
 }
