@@ -1,7 +1,7 @@
 rg = {
   rg1 = {
-    name     = "dev-rg-0001"
-    location = "West europe"
+    resource_group_name = "dev-rg-0001"
+    location            = "West europe"
     tags = {
       environment = "staging"
     }
@@ -27,8 +27,8 @@ vnet = {
   }
 }
 
-  snet = {
-    snet1={
+snet = {
+  snet1 = {
     vnetname                      = "dev-network"
     location                      = "West europe"
     resource_group_name           = "dev-rg-0001"
@@ -42,11 +42,25 @@ vnet = {
     }
   }
   snet2 = {
-    vnetname            = "dev-network"
-    location            = "West europe"
-    resource_group_name = "dev-rg-0001"
-    basname             = "AzureBastionSubnet"
-    address_prefixes    = ["10.0.3.0/26"]
+    vnetname = "dev-network"
+
+    location                      = "West europe"
+    resource_group_name           = "dev-rg-0001"
+    basname                       = "AzureBastionSubnet"
+    address_prefixes              = ["10.0.3.0/26"]
+    nicame                        = "example-nic"
+    ipconfigname                  = "internal"
+    private_ip_address_allocation = "Dynamic"
+    tags = {
+      environment = "staging"
+    }
+  }
+  snet3 = {
+    vnetname                      = "dev-network"
+    location                      = "West europe"
+    resource_group_name           = "dev-rg-0001"
+    subnetname                    = "akssubnet"
+    address_prefixes              = ["10.0.4.0/24"]
     nicame                        = "example-nic"
     ipconfigname                  = "internal"
     private_ip_address_allocation = "Dynamic"
@@ -59,7 +73,7 @@ vnet = {
 
 vm = {
   vm1 = {
-    name                 = "example-machine"
+    vmname               = "example-machine"
     location             = "West europe"
     resource_group_name  = "dev-rg-0001"
     size                 = "Standard_F2"
@@ -70,7 +84,7 @@ vm = {
     sku                  = "22_04-lts"
     version              = "latest"
     kvname               = "examplekeyvault"
-    nicame               = "example-nic"
+    nicname              = "example-nic"
     tags = {
       environment = "staging"
     }
@@ -122,7 +136,7 @@ bas = {
     basname         = "bastion-dev"
     basipconfigname = "bastion-ip"
     basname         = "AzureBastionSubnet"
-      vnetname            = "dev-network"
+    vnetname        = "dev-network"
   }
 }
 
@@ -140,17 +154,42 @@ pip = {
   }
 }
 
-acr={
-    acr1={
-  acrname                = "acr-dev-0001"
-  location            = "West europe"
+acr = {
+  acr1 = {
+    acrname             = "acrdev0001"
+    location            = "West europe"
     resource_group_name = "dev-rg-0001"
-  sku                 = "Standard"
-  admin_enabled       = false
-
-
-}
-tags = {
+    sku                 = "Standard"
+    admin_enabled       = false
+    tags = {
       environment = "staging"
     }
+
+  }
+
+}
+
+
+aks = {
+  aks1 = {
+    aksname                           = "aksdev"
+    aksidentityname                   = "identity-dev"
+    location                          = "West europe"
+    resource_group_name               = "dev-rg-0001"
+      vnetname                      = "dev-network"
+    subnetname                        = "akssubnet"
+    dns_prefix                        = "dev-dnsprefix"
+    kubernetes_version                = 1.31
+    type                              = "UserAssigned"
+    poolname                          = "agentpool"
+    node_count                        = 2
+    vm_size                           = "Standard_DS2_v2"
+    network_plugin                    = "azure"
+    load_balancer_sku                 = "standard"
+    role_based_access_control_enabled = true
+    tags = {
+      environment = "staging"
+    }
+
+  }
 }

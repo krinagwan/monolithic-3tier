@@ -6,7 +6,7 @@ variable "vnet" {
   type = map(any)
 }
 variable "snet" {
-  
+
 }
 
 variable "vm" {
@@ -20,11 +20,14 @@ variable "st" {
 }
 
 variable "bas" {
-  
+
 }
 variable "pip" {
-  
+
 }
 variable "acr" {
+
+}
+variable "aks" {
   
 }
